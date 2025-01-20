@@ -1,6 +1,9 @@
 <?php
 
-class Connection {
+namespace App\Core;
+use Dotenv\Dotenv;
+
+class Database {
 
     private static $instance;
     private $connection;
@@ -21,12 +24,13 @@ class Connection {
     }
 
     private function make_connection() {
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+        $dotenv->load();
         // Asignar las variables de entorno a las propiedades de la clase
-        $host = DB_HOST;
-        $username = DB_USER;
-        $password = DB_PASS;
-        $database = DB_NAME;
-
+        $host = $_ENV['DB_HOST'];
+        $username = $_ENV['DB_USER'];
+        $password = $_ENV['DB_PASS'];
+        $database = $_ENV['DB_NAME'];
         $conexion = new \PDO("mysql:host=$host;dbname=$database", $username, $password);
 
         $setnames = $conexion->prepare("SET NAMES 'utf8'");

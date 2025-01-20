@@ -1,16 +1,13 @@
-<?php
-   echo $GLOBALS['SHOW_ERROR'];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= SITENAME ?></title>
+    <title>NUVOLA &CO</title>
     <link rel="stylesheet" href="/inventario/public/css/coreui.min.css">
-    <link rel="stylesheet" href="/inventario/public/css/all.min.css"> 
+    <link rel="stylesheet" href="/inventario/public/css/all.min.css">
+    <link rel="shortcut icon" href="/inventario/public/icons/cloud-dashboard.svg" />
 </head>
 
 <body>
@@ -21,7 +18,7 @@
                     <div class="card-group d-block d-md-flex row">
                         <div class="card col-md-12 p-4 mb-0">
                             <div class="card-body">
-                                <h1>NUBULA <b>& Co</b></h1>
+                                <h1>NUVOLA <b>& Co</b></h1>
                                 <br>
                                 <p class="text-medium-emphasis">Iniciar Sesion al Sistema</p>
                                 <form method="POST" action="/inventario/public/Auth/login">

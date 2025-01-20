@@ -1,3 +1,8 @@
+<?php
+    use App\Core\View;
+    use App\Core\Controller;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +12,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="/inventario/public/css/coreui.min.css">
     <link rel="stylesheet" href="/inventario/public/css/all.min.css">
+    <link rel="shortcut icon" href="/inventario/public/icons/cloud-dashboard.svg" />
     <style>
     .wrapper {
         width: 100%;
@@ -22,7 +28,9 @@
     <div class="sidebar sidebar-fixed border-end" id="sidebar">
         <div class="sidebar-header border-bottom">
             <div class="sidebar-brand-full">NUVOLA INVENTARIO</div>
-            <div class="sidebar-brand-minimized">NI</div>
+            <div class="sidebar-brand-minimized">
+                <img src="/inventario/public/icons/cloud-dashboard.svg" alt="Logo">
+            </div>
         </div>
         <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
             <li class="nav-title">DASHBOARD</li>
@@ -38,6 +46,13 @@
                     <svg class="nav-icon" width="24" height="24">
                         <use xlink:href="/inventario/public/icons/free.svg#cil-cart"></use>
                     </svg> VENTAS
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/inventario/public/Productos/index">
+                    <svg class="nav-icon" width="24" height="24">
+                        <use xlink:href="/inventario/public/icons/free.svg#cil-3d"></use>
+                    </svg> PRODUCTOS
                 </a>
             </li>
             <li class="nav-item">

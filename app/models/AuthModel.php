@@ -1,10 +1,13 @@
 <?php
 
+namespace App\Models;
+use App\Core\Database;
+
 class AuthModel {
     private $connection;
 
     public function __construct() {
-        $this->connection = Connection::getInstance()->getConnection();
+        $this->connection = Database::getInstance()->getConnection();
     }
 
     public function findUserByEmail($username) {

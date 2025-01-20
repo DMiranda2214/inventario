@@ -1,12 +1,16 @@
 <?php
 
+namespace App\Controllers;
+
 use App\Utils\Alert;
+use App\Core\Controller;
+use App\Models\AuthModel;
 
 class AuthController extends Controller {
-    private $UserModel;
+    private $AuthModel;
 
     public function __construct() {
-        $this->UserModel = $this->model('AuthModel');
+        $this->AuthModel = new AuthModel();
     }
 
     public function index() {
@@ -20,10 +24,10 @@ class AuthController extends Controller {
                 'password' => $_POST['password']
             ];
 
-            $loggedInUser = $this->UserModel->findUserByEmail($data['username']);
+            $loggedInUser = $this->AuthModel->findUserByEmail($data['username']);
             if($loggedInUser && $this->validatePassword($data['password'], $loggedInUser['password'])) {
                 $_SESSION['username'] = $loggedInUser['username'];
-                Alert::showSuccess('Bienvenido', 'Inicio de sesión exitoso', '/inventario/public/dashboard/index');
+                Alert::showSuccess('Bienvenido', 'Inicio de sesión exitoso', '/inventario/public/dashboard');
             }
             else {
                 Alert::showError('Error', 'Usuario o contraseña incorrectos', '/inventario/public');
