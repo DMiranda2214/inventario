@@ -139,7 +139,7 @@
         <div class="body flex-grow-1 px-3">
             <div class="container-fluid">
                 <?php
-                    $content = "/{$GLOBALS['PAGE']}/index";
+                    $content = "/{$GLOBALS['PAGE']}/{$GLOBALS['SECTION']}";
                     View::load($content);
                 ?>
             </div>

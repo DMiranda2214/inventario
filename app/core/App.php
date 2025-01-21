@@ -4,7 +4,7 @@ namespace App\Core;
 
 session_start();
 $GLOBALS['PAGE'] = '';
-
+$GLOBALS['SECTION'] = 'index';
 class App {
     protected $controller = 'AuthController';
     protected $method = 'index';
