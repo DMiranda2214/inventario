@@ -25,8 +25,8 @@ class AuthController extends Controller {
             ];
 
             $loggedInUser = $this->AuthModel->findUserByEmail($data['username']);
-            if($loggedInUser && $this->validatePassword($data['password'], $loggedInUser['password'])) {
-                $_SESSION['username'] = $loggedInUser['username'];
+            if($loggedInUser && $this->validatePassword($data['password'], $loggedInUser['usu_password'])) {
+                $_SESSION['username'] = $loggedInUser['usu_nombre'];
                 Alert::showSuccess('Bienvenido', 'Inicio de sesión exitoso', '/inventario/public/dashboard');
             }
             else {
