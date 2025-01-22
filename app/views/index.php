@@ -57,7 +57,7 @@ use App\Core\Controller;
                 </a>
                 <ul class="nav-group-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="/inventario/public/Proveedores/index"><span class="nav-icon"></span>PROVEEDORES</a>
+                        <a class="nav-link" href="/inventario/public/Proveedor/index"><span class="nav-icon"></span>PROVEEDORES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/inventario/public/Clientes/index"><span class="nav-icon"></span>CLIENTES</a>

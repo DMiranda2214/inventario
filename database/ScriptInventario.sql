@@ -275,4 +275,113 @@ END //
 
 DELIMITER ;
 
+DELIMITER //
 
+CREATE PROCEDURE getAllProveedores()
+BEGIN
+  SELECT 
+    p.prov_id,
+    p.prov_empresa,
+    p.prov_vendedor,
+    p.prov_email,
+    d.dPro_direccion,
+    t.tPro_telefono
+  FROM 
+    Proveedor p
+  LEFT JOIN 
+    dirProveedor d ON p.prov_id = d.dPro_idProveedor
+  LEFT JOIN 
+    telProveedor t ON p.prov_id = t.tPro_idProveedor;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE getProveedorInfo (
+  IN p_prov_id INT
+)
+BEGIN
+  SELECT 
+    p.prov_id,
+    p.prov_empresa,
+    p.prov_vendedor,
+    p.prov_email,
+    d.dPro_direccion,
+    t.tPro_telefono
+  FROM 
+    Proveedor p
+  LEFT JOIN 
+    dirProveedor d ON p.prov_id = d.dPro_idProveedor
+  LEFT JOIN 
+    telProveedor t ON p.prov_id = t.tPro_idProveedor
+  WHERE 
+    p.prov_id = p_prov_id;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE insertProveedor (
+  IN p_empresa VARCHAR(100),
+  IN p_vendedor VARCHAR(100),
+  IN p_email VARCHAR(100),
+  IN p_direccion VARCHAR(100),
+  IN p_telefono VARCHAR(20)
+)
+BEGIN
+  DECLARE v_prov_id INT;
+
+  -- Insertar en la tabla Proveedor
+  INSERT INTO Proveedor (prov_empresa, prov_vendedor, prov_email)
+  VALUES (p_empresa, p_vendedor, p_email);
+
+  -- Obtener el ID del proveedor insertado
+  SET v_prov_id = LAST_INSERT_ID();
+
+  -- Insertar en la tabla dirProveedor
+  INSERT INTO dirProveedor (dPro_idProveedor, dPro_direccion)
+  VALUES (v_prov_id, p_direccion);
+
+  -- Insertar en la tabla telProveedor
+  INSERT INTO telProveedor (tPro_idProveedor, tPro_telefono)
+  VALUES (v_prov_id, p_telefono);
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE updateProveedor (
+  IN p_prov_id INT,
+  IN p_vendedor VARCHAR(100),
+  IN p_email VARCHAR(100),
+  IN p_direccion VARCHAR(100),
+  IN p_telefono VARCHAR(20)
+)
+BEGIN
+  -- Actualizar la información del proveedor en la tabla Proveedor
+  UPDATE Proveedor
+  SET 
+    prov_vendedor = p_vendedor,
+    prov_email = p_email
+  WHERE 
+    prov_id = p_prov_id;
+
+  -- Actualizar la dirección del proveedor en la tabla dirProveedor
+  UPDATE dirProveedor
+  SET 
+    dPro_direccion = p_direccion
+  WHERE 
+    dPro_idProveedor = p_prov_id;
+
+  -- Actualizar el teléfono del proveedor en la tabla telProveedor
+  UPDATE telProveedor
+  SET 
+    tPro_telefono = p_telefono
+  WHERE 
+    tPro_idProveedor = p_prov_id;
+END //
+
+DELIMITER ;

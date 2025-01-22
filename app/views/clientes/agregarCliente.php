@@ -44,7 +44,7 @@
             <div class="row mb-3">
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <button type="submit" class="btn btn-primary">Agregar Producto</button>
+                        <button type="submit" class="btn btn-primary">Agregar Cliente</button>
                     </div>
                 </div>
             </div>

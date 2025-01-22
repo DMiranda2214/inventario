@@ -2,6 +2,9 @@
 
 use App\Controllers\ProductosController;
 use App\Controllers\ClientesController;
+use App\Controllers\ProveedorController;
+
+$proveedorController = new ProveedorController();
 $productosController = new ProductosController();
 $clientesController = new ClientesController();
 ?>
@@ -59,11 +62,11 @@ $clientesController = new ClientesController();
                     </svg>
                 </div>
                 <div>
-                    <div class="fs-6 fs-semibold text-primary"></div>
+                    <div class="fs-6 fs-semibold text-primary"><?= $proveedorController->countProveedores()?></div>
                     <div class="text-medium-emphasis text-uppercase fw-semibold small">PROVEEDORES</div>
                 </div>
             </div>
-            <div class="card-footer px-3 py-2"><a class="btn-block text-medium-emphasis d-flex justify-content-between align-items-center" href="/inventario/public/Proveedores/index">
+            <div class="card-footer px-3 py-2"><a class="btn-block text-medium-emphasis d-flex justify-content-between align-items-center" href="/inventario/public/Proveedor/index">
                     <span class="small fw-semibold">IR A PROVEEDORES</span>
                     <svg class="icon">
                         <use xlink:href="/inventario/public/icons/free.svg#cil-chevron-right"></use>
