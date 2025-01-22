@@ -163,5 +163,116 @@ CREATE TRIGGER descontar_stock
 AFTER INSERT ON Contiene
 FOR EACH ROW
   UPDATE Producto
-  SET pro_Stock = pro_Stock - NEW.cont_cantidad
-  WHERE pro_id = NEW.cont_idProducto;
+    SET pro_Stock = pro_Stock - NEW.cont_cantidad
+    WHERE pro_id = NEW.cont_idProducto;
+
+DELIMITER //
+
+CREATE PROCEDURE insertCliente (
+  IN p_nombre VARCHAR(50),
+  IN p_apellido VARCHAR(50),
+  IN p_email VARCHAR(100),
+  IN p_direccion VARCHAR(100),
+  IN p_telefono VARCHAR(20)
+)
+BEGIN
+  DECLARE v_cli_id INT;
+
+  -- Insertar en la tabla Cliente
+  INSERT INTO Cliente (cil_nombre, cil_apellido, cil_email)
+  VALUES (p_nombre, p_apellido, p_email);
+
+  -- Obtener el ID del cliente insertado
+  SET v_cli_id = LAST_INSERT_ID();
+
+  -- Insertar en la tabla dirCliente
+  INSERT INTO dirCliente (dCli_idCliente, dCli_direccion)
+  VALUES (v_cli_id, p_direccion);
+
+  -- Insertar en la tabla telCliente
+  INSERT INTO telCliente (tCli_idCliente, tCli_telefono)
+  VALUES (v_cli_id, p_telefono);
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE updateCliente (
+  IN p_cli_id INT,
+  IN p_email VARCHAR(100),
+  IN p_direccion VARCHAR(100),
+  IN p_telefono VARCHAR(20)
+)
+BEGIN
+  -- Actualizar la información del cliente en la tabla Cliente
+  UPDATE Cliente
+  SET 
+    cil_email = p_email
+  WHERE 
+    cli_id = p_cli_id;
+
+  -- Actualizar la dirección del cliente en la tabla dirCliente
+  UPDATE dirCliente
+  SET 
+    dCli_direccion = p_direccion
+  WHERE 
+    dCli_idCliente = p_cli_id;
+
+  -- Actualizar el teléfono del cliente en la tabla telCliente
+  UPDATE telCliente
+  SET 
+    tCli_telefono = p_telefono
+  WHERE 
+    tCli_idCliente = p_cli_id;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE getClienteInfo (
+  IN p_cli_id INT
+)
+BEGIN
+  SELECT 
+    c.cli_id,
+    c.cil_nombre,
+    c.cil_apellido,
+    c.cil_email,
+    d.dCli_direccion,
+    t.tCli_telefono
+  FROM 
+    Cliente c
+  LEFT JOIN 
+    dirCliente d ON c.cli_id = d.dCli_idCliente
+  LEFT JOIN 
+    telCliente t ON c.cli_id = t.tCli_idCliente
+  WHERE 
+    c.cli_id = p_cli_id;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE getAllClientes()
+BEGIN
+  SELECT 
+    c.cli_id,
+    c.cil_nombre,
+    c.cil_apellido,
+    c.cil_email,
+    d.dCli_direccion,
+    t.tCli_telefono
+  FROM 
+    Cliente c
+  LEFT JOIN 
+    dirCliente d ON c.cli_id = d.dCli_idCliente
+  LEFT JOIN 
+    telCliente t ON c.cli_id = t.tCli_idCliente;
+END //
+
+DELIMITER ;
+
+
