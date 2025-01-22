@@ -9,7 +9,7 @@
     $limit=3;
     if(isset($_GET["limit"]) && $_GET["limit"]!="" && $_GET["limit"]!=$limit){
         $limit=$_GET["limit"];
-        }
+    }
 
     function getPagination($page, $limit, $totalProducts){
     $totalPages = ceil($totalProducts / $limit);

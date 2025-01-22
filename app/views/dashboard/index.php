@@ -5,12 +5,7 @@ use App\Controllers\ClientesController;
 $productosController = new ProductosController();
 $clientesController = new ClientesController();
 ?>
-<div class="row">
-    <div class="col-md-12">
-        <h4>Bienvenido <?= $_SESSION['username']?></h4>
-    </div>
-</div>
-<br>
+<br><br>
 <div class="row">
     <div class="col-6 col-lg-3">
         <div class="card">

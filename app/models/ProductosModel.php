@@ -5,7 +5,7 @@ use App\Core\Database;
 
 class ProductosModel {
     private $connection;
-    private $table = "products";
+    private $table = "producto";
 
     public function __construct() {
         $this->connection = Database::getInstance()->getConnection();
@@ -26,7 +26,7 @@ class ProductosModel {
 
     public function getTotalProductosByPage($page, $limit) {
         $offset = ($page - 1) * $limit;
-        $query = "SELECT * FROM products LIMIT $offset, $limit";
+        $query = "SELECT * FROM $this->table LIMIT $offset, $limit";
         $result = $this->connection->query($query);
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
@@ -34,10 +34,12 @@ class ProductosModel {
     public function insertProduct($data){
         $query = "INSERT INTO $this->table(name,description,price,category_id,stock) 
                     VALUES('{$data['nombre']}','{$data['description']}',{$data['priceSell']},{$data['categoria']},{$data['inventoryInit']});";
-        print_r($query);
         $result = $this->connection->query($query);
-        echo $result->rowCount();
         return;
+    }
+
+    public function deleteProduct($id) {
+        
     }
 }
 ?>
