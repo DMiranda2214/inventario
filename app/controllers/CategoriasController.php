@@ -29,10 +29,9 @@ class CategoriasController extends Controller {
     }
 
     public function editarCategoria() {
-        $data = ['id' => $_GET['cat_id']];
         $GLOBALS['PAGE'] = 'categorias';
         $GLOBALS['SECTION'] = 'editarCategoria';
-        View::load('index', $data);
+        View::load('index');
     }
 
     public function eliminarCategoria() {

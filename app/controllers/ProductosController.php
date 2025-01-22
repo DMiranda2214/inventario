@@ -28,6 +28,12 @@ class ProductosController extends Controller {
         View::load('index');
     }
 
+    public function editarProducto() {
+        $GLOBALS['PAGE'] = 'productos';
+        $GLOBALS['SECTION'] = 'editarProducto';
+        View::load('index');
+    }
+
     public function countProducts() {
         $total = $this->productosModel->getCantidadProductos();
         return $total;
@@ -43,8 +49,12 @@ class ProductosController extends Controller {
         return $productos;
     }
 
+    public function getByid($id) {
+        $producto = $this->productosModel->getProductoById($id);
+        return $producto;
+    }
+
     public function insert(){
-        $productosModel = new ProductosModel();
         $data = [
             'pro_nombre' => $_POST['pro_nombre'],
             'pro_idCategoria' => $_POST['pro_idCategoria'],
@@ -54,9 +64,20 @@ class ProductosController extends Controller {
         ];
         $producto = $this->productosModel->insertProduct($data);
         Alert::showSuccess('Nuevo Producto', 'Ingresado Correctamente   ', '/inventario/public/productos');
-
     }
 
+    public function edit(){
+        $data = [
+            'pro_id' => $_POST['pro_id'],
+            'pro_nombre' => $_POST['pro_nombre'],
+            'pro_idCategoria' => $_POST['pro_idCategoria'],
+            'pro_descripcion' => $_POST['pro_descripcion'],
+            'pro_precioVenta' => $_POST['pro_precioVenta'],
+            'pro_cantMin' => $_POST['pro_cantMin']
+        ];
+        $this->productosModel->updateProduct($data);
+        Alert::showSuccess('Producto Actualizado', 'Actualizado Correctamente', '/inventario/public/productos');
+    }
 
 }
 
