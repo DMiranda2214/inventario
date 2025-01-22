@@ -57,8 +57,14 @@ CREATE TABLE Producto (
   pro_idCategoria integer NOT NULL,
   pro_descripcion text NOT NULL,
   pro_precioVenta float NOT NULL,
-  pro_Stock integer NOT NULL,
-  pro_idProveedor integer NOT NULL
+  pro_cantMin integer NOT NULL,
+);
+
+CREATE TABLE Inventario (
+  inv_id integer PRIMARY KEY NOT NULL,
+  inv_idProducto integer NOT NULL,
+  inv_Stock integer NOT NULL,
+  inv_precioVenta float NOT NULL
 );
 
 CREATE TABLE Abastece (
@@ -136,6 +142,8 @@ ALTER TABLE Proveedor_Producto ADD FOREIGN KEY (pp_idProveedor) REFERENCES Prove
 ALTER TABLE Pedido ADD FOREIGN KEY (ped_idEstado) REFERENCES Estado (est_id);
 
 ALTER TABLE Usuario ADD FOREIGN KEY (usu_idEstado) REFERENCES Estado (est_id);
+
+ALTER TABLE Inventario ADD FOREIGN KEY (inv_idProducto) REFERENCES Producto (pro_id);
 
 INSERT INTO Estado (est_id, est_Nombre) VALUES
 ('1000', 'Activo'),
