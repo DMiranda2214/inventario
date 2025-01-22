@@ -32,8 +32,8 @@ class ProductosModel {
     }
 
     public function insertProduct($data){
-        $query = "INSERT INTO $this->table(name,description,price,category_id,stock) 
-                    VALUES('{$data['nombre']}','{$data['description']}',{$data['priceSell']},{$data['categoria']},{$data['inventoryInit']});";
+        $query = "INSERT INTO $this->table(pro_nombre,pro_idCategoria,pro_descripcion,pro_precioVenta,pro_cantMin) 
+                    VALUES('{$data['pro_nombre']}',{$data['pro_idCategoria']},'{$data['pro_descripcion']}',{$data['pro_precioVenta']},{$data['pro_cantMin']});";
         $result = $this->connection->query($query);
         return;
     }
