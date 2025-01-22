@@ -51,7 +51,9 @@ class ProductosModel {
     }
 
     public function deleteProduct($id) {
-        
+        $query = "DELETE FROM $this->table WHERE pro_id = $id";
+        $result = $this->connection->query($query);
+        return;
     }
 }
 ?>

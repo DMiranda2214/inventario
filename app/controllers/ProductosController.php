@@ -34,6 +34,13 @@ class ProductosController extends Controller {
         View::load('index');
     }
 
+    public function eliminarProducto() {
+        Alert::showDelete(
+            '/inventario/public/Productos/delete?pro_id='.$_GET['pro_id'].'',
+            '/inventario/public/productos'
+        );
+    }
+
     public function countProducts() {
         $total = $this->productosModel->getCantidadProductos();
         return $total;
@@ -79,6 +86,10 @@ class ProductosController extends Controller {
         Alert::showSuccess('Producto Actualizado', 'Actualizado Correctamente', '/inventario/public/productos');
     }
 
+    public function delete() {
+        $this->productosModel->deleteProduct($_GET['pro_id']);
+        Alert::showSuccess('Producto Eliminado', 'Eliminado Correctamente', '/inventario/public/productos');
+    }
 }
 
 ?>
