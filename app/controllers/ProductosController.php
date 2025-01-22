@@ -8,53 +8,51 @@ use App\Core\View;
 use App\Models\ProductosModel;
 
 class ProductosController extends Controller {
-    public function index() {
+    private $productosModel;
+
+    public function __construct() {
         if(!isset($_SESSION['username'])) {
             header('Location: /inventario/public');
         }
+        $this->productosModel = new ProductosModel();
+    }
+
+    public function index() {
         $GLOBALS['PAGE'] = 'productos';
         View::load('index');
     }
 
     public function agregarProducto() {
-        if(!isset($_SESSION['username'])) {
-            header('Location: /inventario/public');
-        }
         $GLOBALS['PAGE'] = 'productos';
         $GLOBALS['SECTION'] = 'agregarProducto';
         View::load('index');
     }
 
     public function countProducts() {
-        $productosModel = new ProductosModel();
-        $total = $productosModel->getCantidadProductos();
+        $total = $this->productosModel->getCantidadProductos();
         return $total;
     }
 
     public function getTotalProducts() {
-        $productosModel = new ProductosModel();
-        $productos = $productosModel->getTotalProductos();
+        $productos = $this->productosModel->getTotalProductos();
         return $productos;
     }
 
     public function getTotalProductsByPage($page, $limit) {
-        $productosModel = new ProductosModel();
-        $productos = $productosModel->getTotalProductosByPage($page, $limit);
+        $productos = $this->productosModel->getTotalProductosByPage($page, $limit);
         return $productos;
     }
 
     public function insert(){
         $productosModel = new ProductosModel();
         $data = [
-            'nombre' => $_POST['nombre'],
-            'categoria' => $_POST['categoria'],
-            'description' => $_POST['description'],
-            'priceShop' => $_POST['priceShop'],
-            'inventoryInit' => $_POST['inventoryInit'],
-            'priceSell' => $_POST['priceSell'],
-            'inventoryMin' => $_POST['inventoryMin'],
+            'pro_nombre' => $_POST['pro_nombre'],
+            'pro_idCategoria' => $_POST['pro_idCategoria'],
+            'pro_descripcion' => $_POST['pro_descripcion'],
+            'pro_precioVenta' => $_POST['pro_precioVenta'],
+            'pro_cantMin' => $_POST['pro_cantMin']
         ];
-        $producto = $productosModel->insertProduct($data);
+        $producto = $this->productosModel->insertProduct($data);
         Alert::showSuccess('Nuevo Producto', 'Ingresado Correctamente   ', '/inventario/public/productos');
 
     }
