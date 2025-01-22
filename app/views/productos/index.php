@@ -1,17 +1,20 @@
-<?php 
-    use App\Controllers\ProductosController;
-    $productosController = new ProductosController();
+<?php
 
-    $page = 1;
-    if(isset($_GET["page"])){
-        $page=$_GET["page"];
-    }
-    $limit=3;
-    if(isset($_GET["limit"]) && $_GET["limit"]!="" && $_GET["limit"]!=$limit){
-        $limit=$_GET["limit"];
-    }
+use App\Controllers\ProductosController;
 
-    function getPagination($page, $limit, $totalProducts){
+$productosController = new ProductosController();
+
+$page = 1;
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+}
+$limit = 3;
+if (isset($_GET["limit"]) && $_GET["limit"] != "" && $_GET["limit"] != $limit) {
+    $limit = $_GET["limit"];
+}
+
+function getPagination($page, $limit, $totalProducts)
+{
     $totalPages = ceil($totalProducts / $limit);
     if ($totalPages <= 1) {
         return "";
@@ -19,60 +22,57 @@
     $pagination = "";
     for ($i = 1; $i <= $totalPages; $i++) {
         if ($i == $page) {
-        $pagination .= "<span class='btn btn-primary'>$i</span>";
+            $pagination .= "<span class='btn btn-primary'>$i</span>";
         } else {
-        $pagination .= "<a href='/inventario/public/Productos/index?page=$i&limit=$limit' class='btn btn-secondary'>$i</a>";
+            $pagination .= "<a href='/inventario/public/Productos/index?page=$i&limit=$limit' class='btn btn-secondary'>$i</a>";
         }
     }
     return $pagination;
-    }
+}
 
-    $totalProducts = $productosController->countProducts();
-    $productos = $productosController->getTotalProductsByPage($page, $limit);
-    ?>
+$totalProducts = $productosController->countProducts();
+$productos = $productosController->getTotalProductsByPage($page, $limit);
+?>
 
-<div class="row">
-    <div class="col-md-12">
-        <h3>Productos</h3>
-    </div>
-    <br><br>
-    <div>
-        <a href="/inventario/public/Productos/agregarProducto" class="btn btn-secondary">Agregar Producto</a>
-    </div>
-    <br><br>
-    <div class="card">
-        <div class="card-header">Productos</div>
-        <div class="card body">
-            <table class="table table-striped-columns table-hover">
+<br>
+<div>
+    <a href="/inventario/public/Productos/agregarProducto" class="btn btn-primary">Agregar Producto</a>
+</div>
+<br>
+<div class="card">
+    <div class="card-header">PRODUCTOS</div>
+    <div class="card-body">
+        <div class="table-responsive col-md-12">
+            <table class="table align-middle table-bordered">
                 <thead>
-                    <tr>
-                        <th scope="col">Codigo</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Descripción</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Stock</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
+                    <th class="col-md-3">Nombre</th>
+                    <th class="col-md-5">Descripcion</th>
+                    <th class="col-md-2">Precio</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </thead>
                 <tbody class="table-group-divider">
-                    <?php foreach($productos as $producto): ?>
-                        <tr>
-                            <th scope="row"><?= $producto['id'] ?></th>
-                            <td><?= $producto['name'] ?></td>
-                            <td><?= $producto['description'] ?></td>
-                            <td><?= $producto['price'] ?></td>
-                            <td><?= $producto['stock'] ?></td>
-                            <td>
-                                <a href="" class="btn btn-secondary">Editar</a>
-                                <a href="" class="btn btn-danger">Eliminar</a>
-                            </td>
-                        </tr>
+                    <?php foreach ($productos as $producto): ?>
+                        <td><?= $producto['pro_nombre']?></td>
+                        <td><?= $producto['pro_descripcion']?></td>
+                        <td><?= $producto['pro_precioVenta']?></td>
+                        <td>
+                            <a class="py-2 px-4 btn btn-info btn-xs" href="/inventario/public/Productos/editarProducto?pro_id=<?= $producto['pro_id']?>">
+                                <svg class="btn-icon" width="24" height="24">
+                                    <use xlink:href="/inventario/public/icons/free.svg#cil-pencil"></use>
+                                </svg> 
+                            </a>
+                        </td>
+                        <td class="d-flex">
+                            <a class="py-2 px-4 btn btn-danger btn-xs" href="/inventario/public/Productos/eliminarProducto?pro_id=<?= $categoria['pro_id']?>">
+                                <svg class="btn-icon" width="24" height="24">
+                                    <use xlink:href="/inventario/public/icons/free.svg#cil-trash"></use>
+                                </svg> 
+                            </a>
+                        </td>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <div class="pagination">
-                <?= getPagination($page, $limit, $totalProducts); ?>
-            </div>
         </div>
     </div>
 </div>

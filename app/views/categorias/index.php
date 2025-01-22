@@ -19,7 +19,7 @@ $categorias = $categoriaController->get();
                 <thead>
                     <th class="col-md-3">Nombre</th>
                     <th class="col-md-7">Descripcion</th>
-                    <th class="center">Editar</th>
+                    <th>Editar</th>
                     <th>Eliminar</th>
                 </thead>
                 <tbody class="table-group-divider">
