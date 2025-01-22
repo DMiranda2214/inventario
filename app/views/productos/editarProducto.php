@@ -68,7 +68,7 @@
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                         <input type="text" hidden name="pro_id" value="<?= $producto['pro_id'] ?>">
-                        <button type="submit" class="btn btn-primary">Agregar Producto</button>
+                        <button type="submit" class="btn btn-primary">Editar Producto</button>
                     </div>
                 </div>
             </div>

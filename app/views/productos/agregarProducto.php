@@ -1,7 +1,7 @@
 <?php
-use App\Controllers\CategoriaController;
-$categoriaController = new CategoriaController();
-$listCategories = $categoriaController->getNameCategories()
+use App\Controllers\CategoriasController;
+$categoriaController = new CategoriasController();
+$listCategories = $categoriaController->get()
 ?>
 <br>
 <div class="card">
