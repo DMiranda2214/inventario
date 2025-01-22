@@ -46,10 +46,9 @@ $productos = $productosController->getTotalProductsByPage($page, $limit);
             <table class="table align-middle table-bordered">
                 <thead>
                     <th class="col-md-3">Nombre</th>
-                    <th class="col-md-5">Descripcion</th>
+                    <th class="col-md-6">Descripcion</th>
                     <th class="col-md-2">Precio</th>
                     <th>Editar</th>
-                    <th>Eliminar</th>
                 </thead>
                 <tbody class="table-group-divider">
                     <?php foreach ($productos as $producto): ?>
@@ -61,13 +60,6 @@ $productos = $productosController->getTotalProductsByPage($page, $limit);
                                 <a class="py-2 px-4 btn btn-info btn-xs" href="/inventario/public/Productos/editarProducto?pro_id=<?= $producto['pro_id'] ?>">
                                     <svg class="btn-icon" width="24" height="24">
                                         <use xlink:href="/inventario/public/icons/free.svg#cil-pencil"></use>
-                                    </svg>
-                                </a>
-                            </td>
-                            <td class="d-flex">
-                                <a class="py-2 px-4 btn btn-danger btn-xs" href="/inventario/public/Productos/eliminarProducto?pro_id=<?= $producto['pro_id'] ?>">
-                                    <svg class="btn-icon" width="24" height="24">
-                                        <use xlink:href="/inventario/public/icons/free.svg#cil-trash"></use>
                                     </svg>
                                 </a>
                             </td>
