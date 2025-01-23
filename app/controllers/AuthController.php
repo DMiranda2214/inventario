@@ -36,12 +36,7 @@ class AuthController extends Controller {
     }
 
     private function validatePassword($password, $hash) {
-        if($password == $hash) {
-            return true;
-        } else {
-            return false;
-        }
-        //return password_verify($password, $hash);
+        return password_verify($password, $hash);
     }
 }
 ?>

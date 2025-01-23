@@ -57,7 +57,7 @@ CREATE TABLE Producto (
   pro_idCategoria integer NOT NULL,
   pro_descripcion text NOT NULL,
   pro_precioVenta float NOT NULL,
-  pro_cantMin integer NOT NULL,
+  pro_cantMin integer NOT NULL
 );
 
 CREATE TABLE Inventario (
