@@ -14,6 +14,10 @@ use App\Core\Controller;
     <link rel="stylesheet" href="/inventario/public/css/coreui.min.css">
     <link rel="stylesheet" href="/inventario/public/css/all.min.css">
     <link rel="shortcut icon" href="/inventario/public/icons/cloud-dashboard.svg" />
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
     <style>
         .wrapper {
             width: 100%;
@@ -73,10 +77,10 @@ use App\Core\Controller;
                 </a>
                 <ul class="nav-group-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="/inventario/public/Proveedores/index"><span class="nav-icon"></span>VENTAS</a>
+                        <a class="nav-link" href="/inventario/public/Ventas/index"><span class="nav-icon"></span>VENTAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/inventario/public/Clientes/index"><span class="nav-icon"></span>COMPRAS</a>
+                        <a class="nav-link" href="/inventario/public/Compras/index"><span class="nav-icon"></span>COMPRAS</a>
                     </li>
                 </ul>
             </li>

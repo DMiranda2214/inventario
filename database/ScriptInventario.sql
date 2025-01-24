@@ -152,19 +152,25 @@ INSERT INTO Estado (est_id, est_Nombre) VALUES
 ('2001', 'Enviado'),
 ('2002', 'Recibido');
 
-CREATE TRIGGER actualizar_stock
+CREATE TRIGGER registrar_inventario
+AFTER INSERT ON Producto
+FOR EACH ROW
+  INSERT INTO Inventario (inv_idProducto, inv_Stock, inv_precioVenta)
+  VALUES (NEW.pro_id, 0, 0);
+
+CREATE TRIGGER ingresar_stock
 AFTER INSERT ON Abastece
 FOR EACH ROW
-  UPDATE Producto
-  SET pro_Stock = pro_Stock + NEW.sum_cantidad
-  WHERE pro_id = NEW.sum_idProducto;
+  UPDATE Inventario
+    SET inv_Stock = inv_Stock + NEW.sum_cantidad
+    WHERE inv_idProducto = NEW.sum_idProducto;
 
 CREATE TRIGGER descontar_stock
 AFTER INSERT ON Contiene
 FOR EACH ROW
-  UPDATE Producto
-    SET pro_Stock = pro_Stock - NEW.cont_cantidad
-    WHERE pro_id = NEW.cont_idProducto;
+  UPDATE Inventario
+    SET inv_Stock = inv_Stock - NEW.cont_cantidad
+    WHERE inv_idProducto = NEW.cont_idProducto;
 
 DELIMITER //
 
@@ -382,6 +388,32 @@ BEGIN
     tPro_telefono = p_telefono
   WHERE 
     tPro_idProveedor = p_prov_id;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE insertCompra (
+  IN p_provid INT,
+  IN p_fecha DATE,
+  IN p_total FLOAT,
+  IN p_producto INT,
+  IN p_cantidad INT,
+  IN p_precioUnitario FLOAT,
+  IN p_subTotal FLOAT
+)
+
+BEGIN
+  DECLARE v_compra_id INT;
+
+  INSERT INTO Compra (com_idProveedor, com_fecha, com_totalCompra)
+  VALUES (p_provid, p_fecha, p_total);
+
+  SET v_compra_id = LAST_INSERT_ID();
+
+  INSERT INTO Abastece (sum_idCompra, sum_idProducto, sum_cantidad, sum_precioUnitario, sum_subTotal)
+  VALUES (v_compra_id, p_producto, p_cantidad, p_precioUnitario, p_subTotal);
 END //
 
 DELIMITER ;
