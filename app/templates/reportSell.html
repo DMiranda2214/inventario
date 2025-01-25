@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Ventas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #d5b2f1;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+        header h1 {
+            display: inline;
+            font-size: 24px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        .summary, .details {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+        }
+        .summary h2, .details h2 {
+            border-bottom: 2px solid #c466db;
+            padding-bottom: 5px;
+        }
+        .summary p, .details p {
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #9f41c4;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="./icon/cloud-dashboard copy.svg" alt="Nuvola Logo">
+        <h1>Nuvula & Co</h1>
+    </header>
+    <section class="summary">
+        <h2>Reporte general de ventas</h2>
+        <p><strong>Generacion del reporte: </strong> {{ fechaGeneracion }}</p>
+        <p><strong>Fecha inicial:</strong> {{ fechaInicio }}</p>
+        <p><strong>Fecha final:</strong> {{ fechaFin }}</p>
+        <p><strong>Cantidad de Ventas:</strong>  {{ cantidadVentas }}</p>
+        <p><strong>Monto Total de Ventas:</strong>  {{ totalVentas }} COP</p>
+    </section>
+    <section class="details">
+        <h2>Detalles</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ tablaContenido }}
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

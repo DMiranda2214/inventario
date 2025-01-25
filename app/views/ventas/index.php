@@ -10,6 +10,7 @@ $ventas = $ventasController->get();
 <br>
 <div>
     <a href="/inventario/public/ventas/agregarVenta" class="btn btn-primary">Nueva Venta</a>
+    <a href="/inventario/public/ventas/reporteVentas" class="btn btn-primary">Generar Reporte</a>
 </div>
 <br>
 <div class="card">

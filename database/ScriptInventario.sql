@@ -589,6 +589,28 @@ END
 DELIMITER ;
 
 
+DELIMITER //
+
+CREATE PROCEDURE getAllCompras()
+BEGIN
+  SELECT
+    c.com_id,
+    c.com_fecha,
+    c.com_totalCompra,
+    p.prov_empresa AS proveedor,
+    pr.pro_nombre AS producto
+  FROM
+    Compra c
+    INNER JOIN Proveedor p ON c.com_idProveedor = p.prov_id
+    INNER JOIN Abastece a ON c.com_id = a.sum_idCompra
+    INNER JOIN Producto pr ON a.sum_idProducto = pr.pro_id;
+END
+//
+
+DELIMITER ;
+
+
+
 
 
 INSERT INTO Categoria
