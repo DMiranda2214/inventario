@@ -14,10 +14,6 @@ use App\Core\Controller;
     <link rel="stylesheet" href="/inventario/public/css/coreui.min.css">
     <link rel="stylesheet" href="/inventario/public/css/all.min.css">
     <link rel="shortcut icon" href="/inventario/public/icons/cloud-dashboard.svg" />
-    <script
-        src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-        crossorigin="anonymous"></script>
     <style>
         .wrapper {
             width: 100%;
