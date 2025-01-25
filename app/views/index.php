@@ -108,6 +108,11 @@ use App\Core\Controller;
                     </svg> AYUDA
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/inventario/public/Auth/logout">
+                    <img class="nav-icon" src="/inventario/public/icons/logout.svg" alt="logout"> CERRAR SESSION
+                </a>
+            </li>
         </ul>
         <div class="sidebar-footer border-top d-flex">
             <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
