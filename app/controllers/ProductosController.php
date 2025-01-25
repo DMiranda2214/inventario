@@ -95,6 +95,11 @@ class ProductosController extends Controller {
         $this->productosModel->deleteProduct($_GET['pro_id']);
         Alert::showSuccess('Producto Eliminado', 'Eliminado Correctamente', '/inventario/public/productos');
     }
+
+    public function validateStatusInventario() {
+        $productos = $this->productosModel->validateStatusInventory();
+        return $productos;
+    }
 }
 
 ?>

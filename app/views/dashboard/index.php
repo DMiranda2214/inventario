@@ -9,6 +9,8 @@ $ventasController = new VentasController();
 $proveedorController = new ProveedorController();
 $productosController = new ProductosController();
 $clientesController = new ClientesController();
+
+$statusInventario = $productosController->validateStatusInventario();
 ?>
 <br><br>
 <div class="row">
@@ -106,10 +108,21 @@ $clientesController = new ClientesController();
         <div class="card">
             <div class="card-header">ALERTAS INVENTARIO</div>
             <div class="card-body">
-                <div class="jumbotron">
-                    <h2>No hay alertas</h2>
-                    <p>No tiene alertas de inventario pendientes</p>
-                </div>
+                <?php if(count($statusInventario) > 0):?>
+                    <?php foreach ($statusInventario as $status): ?>
+                        <div class="alert alert-warning" role="alert">
+                            <h4 class="alert-heading">Alerta de inventario</h4>
+                            <p>El producto <?= $status['pro_nombre'] ?> tiene un stock de <?= $status['inv_Stock'] ?> unidades</p>
+                            <hr>
+                            <p class="mb-0">Por favor, reabastezca el inventario</p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="jumbotron">
+                        <h2>No hay alertas</h2>
+                        <p>No tiene alertas de inventario pendientes</p>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

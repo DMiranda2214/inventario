@@ -661,7 +661,32 @@ END
 
 DELIMITER ;
 
+DELIMITER //
 
+CREATE PROCEDURE getPedidoDetalle (
+  IN p_ped_id INT
+)
+BEGIN
+  SELECT
+    p.ped_id,
+    p.ped_fecha,
+    c.cli_nombre,
+    c.cli_apellido,
+    pr.pro_nombre,
+    co.cont_cantidad,
+    co.cont_precioUnitario,
+    co.cont_pedidoSubTotal
+  FROM
+    Pedido p
+    INNER JOIN Cliente c ON p.ped_idCliente = c.cli_id
+    INNER JOIN Contiene co ON p.ped_id = co.cont_idPedido
+    INNER JOIN Producto pr ON co.cont_idProducto = pr.pro_id
+  WHERE 
+    p.ped_id = p_ped_id;
+END
+//
+
+DELIMITER ;
 
 INSERT INTO Categoria
   (cat_id, cat_nombre, cat_descripcion)

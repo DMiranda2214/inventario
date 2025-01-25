@@ -53,4 +53,11 @@ class VentasModel
         $resultados = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $resultados;
     }
+
+    public function getDetailPedido($id)
+    {
+        $query = "call getPedidoDetalle($id)";
+        $result = $this->connection->query($query);
+        return $result->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

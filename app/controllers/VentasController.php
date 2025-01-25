@@ -44,6 +44,13 @@ class VentasController extends Controller
         View::load('index');
     }
 
+    public function detalleVenta()
+    {
+        $GLOBALS['PAGE'] = 'ventas';
+        $GLOBALS['SECTION'] = 'detalleVenta';
+        View::load('index');
+    }
+
     public function get()
     {
         $ventas = $this->ventasModel->getTotalPedidos();
@@ -79,6 +86,11 @@ class VentasController extends Controller
         Alert::showSuccess('Registro Exitoso', 'Venta registrada con exito', '/inventario/public/ventas');
     }
 
+    public function getDetailSell($id)
+    {
+        $detalleVenta = $this->ventasModel->getDetailPedido($id);
+        return $detalleVenta;
+    }
 
     public function generatePDFSell()
     {
@@ -101,6 +113,24 @@ class VentasController extends Controller
         $htmlContent = file_get_contents($htmlFile);
         $dompdf = new DompdfUtil();
         $dompdf->generatePDFSell($htmlContent, $data);
+    }
+
+    public function generatePDFFactura() {
+        $id = $_POST['ped_id'];
+        date_default_timezone_set('America/Bogota');
+        $htmlFile = realpath(__DIR__ . '/../templates/factura.html');
+        $dataFactura = $this->getDetailSell($id);
+        $tablaContenido = $this->generateFacturaDataTable($dataFactura);
+        $data = [
+            'filename' => 'factura_'. $dataFactura[0]['cli_nombre'].'_'.$dataFactura[0]['cli_apellido'],
+            'nombreCliente' => $dataFactura[0]['cli_nombre'].' '.$dataFactura[0]['cli_apellido'],
+            'fechaGeneracion' => date('Y-m-d h:i:s A'),
+            'tablaContenido' => $tablaContenido,
+            'totalVenta' => number_format($dataFactura[0]['cont_pedidoSubTotal'])
+        ];
+        $htmlContent = file_get_contents($htmlFile);
+        $dompdf = new DompdfUtil();
+        $dompdf->generatePDFFactura($htmlContent, $data);
     }
 
     private function getSellByPeriod($fechaInicio, $fechaFin)
@@ -133,6 +163,19 @@ class VentasController extends Controller
             $tablaContenido .= '<td>' . $fila['pro_nombre'] . '</td>';
             $tablaContenido .= '<td>' . $fila['cont_cantidad'] . '</td>';
             $tablaContenido .= '<td> $' . number_format($fila['ped_totalPedido']) . '</td>';
+            $tablaContenido .= '</tr>';
+        }
+        return $tablaContenido;
+    }
+
+    private function generateFacturaDataTable($venta){
+        $tablaContenido = '';
+        foreach ($venta as $fila) {
+            $tablaContenido .= '<tr>';
+            $tablaContenido .= '<td>' . $fila['ped_fecha'] .'</td>';
+            $tablaContenido .= '<td>' . $fila['pro_nombre'] . ' '. $fila['cli_apellido'] .'</td>';
+            $tablaContenido .= '<td>' . $fila['cont_cantidad'] . '</td>';
+            $tablaContenido .= '<td> $' . number_format($fila['cont_precioUnitario']) . '</td>';
             $tablaContenido .= '</tr>';
         }
         return $tablaContenido;

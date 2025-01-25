@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header img {
+            max-width: 150px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .info .date,
+        .info .client {
+            text-align: left;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="./icon/cloud-dashboard copy.svg" alt="Nuvola Logo">
+            <h1>Nuvula & Co</h1>
+        </header>
+        <section class="info">
+            <div class="date">
+                <p>Fecha: {{ fechaGeneracion }}</p>
+            </div>
+            <div class="client">
+                <p>Cliente: {{ nombreCliente }}</p>
+            </div>
+        </section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ tablaContenido }}
+            </tbody>
+        </table>
+        <div>
+            <p>TOTAL: {{ totalVenta }}</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Nuvula & Co. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>
