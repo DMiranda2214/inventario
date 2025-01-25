@@ -9,7 +9,7 @@
 <br>
 <div class="card">
     <div class="card-header">
-        <strong>Nuevo Producto</strong>
+        <strong>Editar Producto</strong>
     </div>
     <div class="card-body">
         <form action="/inventario/public/Productos/edit" method="POST" class="form-horizontal">
