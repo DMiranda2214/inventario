@@ -27,6 +27,11 @@ class ComprasController extends Controller {
         View::load('index');
     }
 
+    public function get() {
+        $compras = $this->comprasModel->getTotalCompras();
+        return $compras;
+    }
+
 
     public function insert() {
         $data = [

@@ -15,7 +15,11 @@
             return;
         }
 
-
+        public function getTotalCompras() {
+            $query = "call getAllCompras()";
+            $result = $this->connection->query($query);
+            return $result->fetchAll(\PDO::FETCH_ASSOC);
+        }
     }
 
 ?>
