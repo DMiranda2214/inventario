@@ -3,7 +3,9 @@
 use App\Controllers\ProductosController;
 use App\Controllers\ClientesController;
 use App\Controllers\ProveedorController;
+use App\Controllers\VentasController;
 
+$ventasController = new VentasController();
 $proveedorController = new ProveedorController();
 $productosController = new ProductosController();
 $clientesController = new ClientesController();
@@ -83,7 +85,7 @@ $clientesController = new ClientesController();
                     </svg>
                 </div>
                 <div>
-                    <div class="fs-6 fs-semibold text-primary"></div>
+                    <div class="fs-6 fs-semibold text-primary"><?= $ventasController->countVentas()?></div>
                     <div class="text-medium-emphasis text-uppercase fw-semibold small">VENTAS</div>
                 </div>
             </div>
