@@ -30,6 +30,13 @@
             $resultados = $stmt->fetchAll(\PDO::FETCH_ASSOC);
             return $resultados;
         }
+
+        public function getDetailCompra($id)
+        {
+            $query = "call getCompraDetalle ($id)";
+            $result = $this->connection->query($query);
+            return $result->fetch(\PDO::FETCH_ASSOC);
+        }
     }
 
 ?>

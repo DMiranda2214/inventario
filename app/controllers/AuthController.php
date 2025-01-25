@@ -35,6 +35,15 @@ class AuthController extends Controller {
         }
     }
 
+    public function logout() {
+        // Finally, destroy the session.
+        session_destroy();
+
+        // Redirect to the login page
+        header('Location: /inventario/public');
+        exit();
+    }
+
     private function validatePassword($password, $hash) {
         return password_verify($password, $hash);
     }

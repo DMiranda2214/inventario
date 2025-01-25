@@ -40,12 +40,22 @@ class ComprasController extends Controller
         View::load('index');
     }
 
+    public function detalleCompra() {
+        $GLOBALS['PAGE'] = 'compras';
+        $GLOBALS['SECTION'] = 'detalleCompra';
+        View::load('index');
+    }
+
     public function get()
     {
         $compras = $this->comprasModel->getTotalCompras();
         return $compras;
     }
 
+    public function getDetailBuy($id) {
+        $compras = $this->comprasModel->getDetailCompra($id);
+        return $compras;
+    }
 
     public function insert()
     {

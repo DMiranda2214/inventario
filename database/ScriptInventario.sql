@@ -688,6 +688,36 @@ END
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE PROCEDURE getCompraDetalle (
+  IN p_com_id INT
+)
+BEGIN
+  SELECT
+    p.prov_empresa,
+    c.com_fecha,
+    p.prov_vendedor,
+    d.dPro_direccion,
+    pr.pro_nombre,
+    a.sum_cantidad,
+    a.sum_precioUnitario,
+    a.sum_subTotal
+  FROM
+    Compra c
+    INNER JOIN Proveedor p ON c.com_idProveedor = p.prov_id
+    INNER JOIN dirProveedor d ON p.prov_id = d.dPro_idProveedor
+    INNER JOIN Abastece a ON c.com_id = a.sum_idCompra
+    INNER JOIN Producto pr ON a.sum_idProducto = pr.pro_id
+  WHERE 
+    c.com_id = p_com_id;
+END
+//
+
+DELIMITER ;
+
+
+
 INSERT INTO Categoria
   (cat_id, cat_nombre, cat_descripcion)
 VALUES

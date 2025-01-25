@@ -16,9 +16,10 @@
             <table class="table align-middle table-bordered">
                 <thead>
                     <th class="col-md-3">Fecha</th>
-                    <th class="col-md-4">Producto</th>
-                    <th class="col-md-4">Proveedor</th>
+                    <th class="col-md-3">Producto</th>
+                    <th class="col-md-3">Proveedor</th>
                     <th class="col-md-2">Total</th>
+                    <th class="col-md-1">Detalles</th>
                 </thead>
                 <tbody class="table-group-divider">
                     <?php foreach ($compras as $compra): ?>
@@ -27,6 +28,11 @@
                             <td><?= $compra['producto'] ?></td>
                             <td><?= $compra['proveedor'] ?></td>
                             <td><?= $compra['com_totalCompra'] ?></td>
+                            <td>
+                                <a class="py-2 px-4 btn btn-info btn-xs" href="/inventario/public/compras/detalleCompra?com_id=<?= $compra['com_id'] ?>">
+                                    <img src="/inventario/public/icons/info.svg" alt="Logo">
+                                </a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
