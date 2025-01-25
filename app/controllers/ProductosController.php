@@ -61,6 +61,11 @@ class ProductosController extends Controller {
         return $producto;
     }
 
+   public function getProductsToSell() {
+        $productos = $this->productosModel->getProductsToSell();
+        return $productos;
+    }
+
     public function insert(){
         $data = [
             'pro_nombre' => $_POST['pro_nombre'],
