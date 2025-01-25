@@ -34,12 +34,19 @@ use App\Core\Controller;
             </div>
         </div>
         <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
-            <li class="nav-title">DASHBOARD</li>
+            <li class="nav-title">MENU</li>
             <li class="nav-item">
                 <a class="nav-link" href="/inventario/public/Dashboard/index">
                     <svg class="nav-icon" width="24" height="24">
                         <use xlink:href="/inventario/public/icons/free.svg#cil-home"></use>
                     </svg> INICIO
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/inventario/public/Inventario/index">
+                    <svg class="nav-icon" width="24" height="24">
+                        <use xlink:href="/inventario/public/icons/free.svg#cil-factory"></use>
+                    </svg> INVENTARIO
                 </a>
             </li>
             <li class="nav-item">
