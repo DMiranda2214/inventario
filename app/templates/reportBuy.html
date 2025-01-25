@@ -69,12 +69,12 @@
         <h1>Nuvula & Co</h1>
     </header>
     <section class="summary">
-        <h2>Reporte general de ventas</h2>
+        <h2>Reporte general de compras</h2>
         <p><strong>Generacion del reporte: </strong> {{ fechaGeneracion }}</p>
         <p><strong>Fecha inicial:</strong> {{ fechaInicio }}</p>
         <p><strong>Fecha final:</strong> {{ fechaFin }}</p>
-        <p><strong>Cantidad de Ventas:</strong>  {{ cantidadVentas }}</p>
-        <p><strong>Monto Total de Ventas:</strong> $ {{ totalVentas }} COP</p>
+        <p><strong>Cantidad de productos comprados:</strong>  {{ cantidadCompras }}</p>
+        <p><strong>Monto Total de compras:</strong> $ {{ totalCompras }} COP</p>
     </section>
     <section class="details">
         <h2>Detalles</h2>
@@ -82,8 +82,8 @@
             <thead>
                 <tr>
                     <th>Fecha</th>
+                    <th>Empresa</th>
                     <th>Cliente</th>
-                    <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Total</th>
                 </tr>

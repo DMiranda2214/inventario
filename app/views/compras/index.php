@@ -6,6 +6,7 @@
 <br>
 <div>
     <a href="/inventario/public/compras/agregarCompra" class="btn btn-primary">Nueva Compra</a>
+    <a href="/inventario/public/compras/reporteCompras" class="btn btn-primary">Reporte Compras</a>
 </div>
 <br>
 <div class="card">

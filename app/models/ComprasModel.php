@@ -20,6 +20,16 @@
             $result = $this->connection->query($query);
             return $result->fetchAll(\PDO::FETCH_ASSOC);
         }
+
+        public function getComprasByPeriodo($fechaInicio, $fechaFin) {
+            $query = "CALL getComprasPorPeriodo(:fechaInicio, :fechaFin)";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bindParam(':fechaInicio', $fechaInicio, \PDO::PARAM_STR);
+            $stmt->bindParam(':fechaFin', $fechaFin, \PDO::PARAM_STR);
+            $stmt->execute();
+            $resultados = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $resultados;
+        }
     }
 
 ?>

@@ -610,6 +610,56 @@ END
 DELIMITER ;
 
 
+DELIMITER //
+
+CREATE PROCEDURE getVentasPorPeriodo (
+  IN p_fechaInicio DATE,
+  IN p_fechaFin DATE
+)
+BEGIN
+  SELECT
+    p.ped_fecha,
+    c.cli_nombre,
+    c.cli_apellido,
+    pr.pro_nombre,
+    co.cont_cantidad,
+    p.ped_totalPedido
+  FROM
+    Pedido p
+    INNER JOIN Cliente c ON p.ped_idCliente = c.cli_id
+    INNER JOIN Contiene co ON p.ped_id = co.cont_idPedido
+    INNER JOIN Producto pr ON co.cont_idProducto = pr.pro_id
+  WHERE 
+    p.ped_fecha BETWEEN p_fechaInicio AND p_fechaFin;
+END
+//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE getComprasPorPeriodo (
+  IN p_fechaInicio DATE,
+  IN p_fechaFin DATE
+)
+BEGIN
+  SELECT
+    p.prov_empresa,
+    pr.pro_nombre,
+    a.sum_cantidad,
+    c.com_fecha,
+    c.com_totalCompra
+  FROM
+    Compra c
+    INNER JOIN Proveedor p ON c.com_idProveedor = p.prov_id
+    INNER JOIN Abastece a ON c.com_id = a.sum_idCompra
+    INNER JOIN Producto pr ON a.sum_idProducto = pr.pro_id
+  WHERE 
+    c.com_fecha BETWEEN p_fechaInicio AND p_fechaFin;
+END
+//
+
+DELIMITER ;
 
 
 

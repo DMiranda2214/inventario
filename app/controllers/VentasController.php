@@ -90,12 +90,12 @@ class VentasController extends Controller
         $tablaContenido = $this->generateDataTable($ventas);
 
         $data = [
-            'filename' => 'reporte_ventas',
+            'filename' => 'ventas_' . $_POST['fechaInicio'] . '_' . $_POST['fechaFin'],
             'fechaGeneracion' => date('Y-m-d h:i:s A'),
             'fechaInicio' => $_POST['fechaInicio'],
             'fechaFin' => $_POST['fechaFin'],
             'cantidadVentas' => $countVentas,
-            'totalVentas' => $totalVentas,
+            'totalVentas' => number_format($totalVentas),
             'tablaContenido' => $tablaContenido
         ];
         $htmlContent = file_get_contents($htmlFile);
@@ -132,7 +132,7 @@ class VentasController extends Controller
             $tablaContenido .= '<td>' . $fila['cli_nombre'] . ' '. $fila['cli_apellido'] .'</td>';
             $tablaContenido .= '<td>' . $fila['pro_nombre'] . '</td>';
             $tablaContenido .= '<td>' . $fila['cont_cantidad'] . '</td>';
-            $tablaContenido .= '<td>' . $fila['ped_totalPedido'] . '</td>';
+            $tablaContenido .= '<td> $' . number_format($fila['ped_totalPedido']) . '</td>';
             $tablaContenido .= '</tr>';
         }
         return $tablaContenido;
