@@ -24,9 +24,9 @@ $clientes = $clientesController->get();
                 <tbody class="table-group-divider">
                     <?php foreach ($clientes as $cliente): ?>
                         <tr>
-                            <td><?=  $cliente['cil_nombre'] ?></td>
-                            <td><?=  $cliente['cil_apellido'] ?></td>
-                            <td><?=  $cliente['cil_email'] ?></td>
+                            <td><?=  $cliente['cli_nombre'] ?></td>
+                            <td><?=  $cliente['cli_apellido'] ?></td>
+                            <td><?=  $cliente['cli_email'] ?></td>
                             <td><?=  $cliente['dCli_direccion'] ?></td>
                             <td><?=  $cliente['tCli_telefono'] ?></td>
                             <td>

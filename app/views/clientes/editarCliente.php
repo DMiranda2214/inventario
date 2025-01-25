@@ -16,13 +16,13 @@
                 <div class="col-6">
                     <label class="col-lg-3 control-label" for="inputClientNombre">Nombre</label>
                     <div class="input-group">
-                        <input type="text" name="cli_nombre"  value="<?= $cliente['cil_nombre'] ?>" disabled class="form-control" id="inputClientNombre" placeholder="Nombre del cliente">
+                        <input type="text" name="cli_nombre"  value="<?= $cliente['cli_nombre'] ?>" disabled class="form-control" id="inputClientNombre" placeholder="Nombre del cliente">
                     </div>
                 </div>
                 <div class="col-6">
                     <label class="col-lg-3 control-label" for="inputClientApellido">Apellido</label>
                     <div class="input-group">
-                        <input type="text" name="cli_apellido" value="<?= $cliente['cil_apellido'] ?>" disabled class="form-control" id="inputClientApellido" placeholder="Apellido del cliente">
+                        <input type="text" name="cli_apellido" value="<?= $cliente['cli_apellido'] ?>" disabled class="form-control" id="inputClientApellido" placeholder="Apellido del cliente">
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="col-12">
                     <label class="col-lg-3 control-label" for="inputClientEmail">Email</label>
                     <div class="input-group">
-                        <input type="text" name="cli_email" value="<?= $cliente['cil_email'] ?>" class="form-control" id="inputClientEmail" placeholder="Email del cliente">
+                        <input type="text" name="cli_email" value="<?= $cliente['cli_email'] ?>" class="form-control" id="inputClientEmail" placeholder="Email del cliente">
                     </div>
                 </div>
             </div>
