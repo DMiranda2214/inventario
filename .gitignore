@@ -13,3 +13,6 @@ composer.lock
 
 config.php
 .env
+apache.conf
+docker-compose.yml
+Dockerfile

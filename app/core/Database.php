@@ -28,9 +28,9 @@ class Database {
         $dotenv->load();
         // Asignar las variables de entorno a las propiedades de la clase
         $host = $_ENV['DB_HOST'];
-        $username = $_ENV['DB_USER'];
-        $password = $_ENV['DB_PASS'];
-        $database = $_ENV['DB_NAME'];
+        $username = $_ENV['DB_USERNAME'];
+        $password = $_ENV['DB_PASSWORD'];
+        $database = $_ENV['DB_DATABASE'];
         $conexion = new \PDO("mysql:host=$host;dbname=$database", $username, $password);
 
         $setnames = $conexion->prepare("SET NAMES 'utf8'");
