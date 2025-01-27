@@ -60,7 +60,7 @@
                     <label class="col-lg-3 control-label" for="inlineFormInputGroupInventoryMin">Cantidad Minima</label>
                     <div class="input-group">
                         <div class="input-group-text">UND</div>
-                        <input type="number" name="pro_cantMin" value="<?= $producto['pro_cantMin'] ?>" class="form-control" id="inlineFormInputGroupInventoryMin" placeholder="Cantidad Minima (Default: 10)">
+                        <input type="number" name="pro_cantMin" value="<?= $producto['pro_minStock'] ?>" class="form-control" id="inlineFormInputGroupInventoryMin" placeholder="Cantidad Minima (Default: 10)">
                     </div>
                 </div>
             </div>

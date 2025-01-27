@@ -46,7 +46,7 @@ class ProductosModel
 
     public function insertProduct($data)
     {
-        $query = "INSERT INTO $this->table(pro_nombre,pro_idCategoria,pro_descripcion,pro_precioVenta,pro_cantMin) 
+        $query = "INSERT INTO $this->table(pro_nombre,pro_idCategoria,pro_descripcion,pro_precioVenta,pro_minStock) 
                     VALUES('{$data['pro_nombre']}',{$data['pro_idCategoria']},'{$data['pro_descripcion']}',{$data['pro_precioVenta']},{$data['pro_cantMin']});";
         $result = $this->connection->query($query);
         return;
@@ -61,7 +61,7 @@ class ProductosModel
 
     public function updateProduct($data)
     {
-        $query = "UPDATE $this->table SET pro_nombre = '{$data['pro_nombre']}', pro_idCategoria = {$data['pro_idCategoria']}, pro_descripcion = '{$data['pro_descripcion']}', pro_precioVenta = {$data['pro_precioVenta']}, pro_cantMin = {$data['pro_cantMin']} WHERE pro_id = {$data['pro_id']}";
+        $query = "UPDATE $this->table SET pro_nombre = '{$data['pro_nombre']}', pro_idCategoria = {$data['pro_idCategoria']}, pro_descripcion = '{$data['pro_descripcion']}', pro_precioVenta = {$data['pro_precioVenta']}, pro_minStock = {$data['pro_cantMin']} WHERE pro_id = {$data['pro_id']}";
         $result = $this->connection->query($query);
         return;
     }
