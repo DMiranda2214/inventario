@@ -7,27 +7,18 @@
     <title>Factura</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .container {
-            width: 80%;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            flex: 1;
+            background-color: #f4f3f3;
+            color: #333;
         }
 
         header {
+            background-color: #b295c2;
+            color: white;
+            padding: 10px 0;
             text-align: center;
-            margin-bottom: 20px;
         }
 
         header img {
@@ -39,43 +30,58 @@
             font-size: 24px;
         }
 
-        .info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
+        .summary,
+        .details {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
         }
 
-        .info .date,
-        .info .client {
-            text-align: left;
+        .summary h2,
+        .details h2 {
+            border-bottom: 2px solid #a5b366;
+            padding-bottom: 5px;
+        }
+
+        .summary p,
+        .details p {
+            margin: 10px 0;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-top: 20px;
         }
 
-        table th,
-        table td {
+        table,
+        th,
+        td {
             border: 1px solid #ddd;
+        }
+
+        th,
+        td {
             padding: 10px;
+            text-align: left;
         }
 
-        table th {
-            background-color: #4CAF50;
+        th {
+            background-color: #b295c2;
             color: white;
-            text-align: center;
         }
 
-        table tr:nth-child(even) {
+        tr:nth-child(even) {
             background-color: #f2f2f2;
         }
 
         footer {
             text-align: center;
             padding: 10px;
-            background-color: #4CAF50;
+            background-color: #b295c2;
             color: white;
             position: fixed;
             bottom: 0;
@@ -85,19 +91,20 @@
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <img src="./icon/cloud-dashboard copy.svg" alt="Nuvola Logo">
-            <h1>Nuvula & Co</h1>
-        </header>
-        <section class="info">
-            <div class="date">
-                <p>Fecha: {{ fechaGeneracion }}</p>
-            </div>
-            <div class="client">
-                <p>Cliente: {{ nombreCliente }}</p>
-            </div>
-        </section>
+
+    <header>
+        <h1>Nuvola & Co</h1>
+    </header>
+    <section class="summary">
+        <h2>Informacion: </h2>
+        <p>Fecha: {{ fechaGeneracion }}</p>
+        <p>Cliente: {{ nombreCliente }}</p>
+        <p>Direccion: {{ direccionCliente }}</p>
+        <p>Telefono: {{ telefonoCliente }}</p>
+        <p>Correo: {{ correoCliente }}</p>
+    </section>
+    <section class="details">
+        <h2>Productos: </h2>
         <table>
             <thead>
                 <tr>
@@ -111,12 +118,12 @@
                 {{ tablaContenido }}
             </tbody>
         </table>
-        <div>
-            <p>TOTAL: {{ totalVenta }}</p>
-        </div>
-    </div>
+        <br><br>
+        <p><strong>TOTAL:</strong> {{ totalVenta }}</p>
+    </section>
+
     <footer>
-        <p>&copy; 2023 Nuvula & Co. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Nuvula & Co. Todos los derechos reservados.</p>
     </footer>
 </body>
 
