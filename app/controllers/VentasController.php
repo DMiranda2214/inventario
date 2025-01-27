@@ -123,8 +123,11 @@ class VentasController extends Controller
         $tablaContenido = $this->generateFacturaDataTable($dataFactura);
         $data = [
             'filename' => 'factura_'. $dataFactura[0]['cli_nombre'].'_'.$dataFactura[0]['cli_apellido'],
-            'nombreCliente' => $dataFactura[0]['cli_nombre'].' '.$dataFactura[0]['cli_apellido'],
             'fechaGeneracion' => date('Y-m-d h:i:s A'),
+            'nombreCliente' => $dataFactura[0]['cli_nombre'].' '.$dataFactura[0]['cli_apellido'],
+            'direccionCliente' => $dataFactura[0]['dCli_direccion'],
+            'telefonoCliente' => $dataFactura[0]['tCli_telefono'],
+            'correoCliente' => $dataFactura[0]['cli_email'],
             'tablaContenido' => $tablaContenido,
             'totalVenta' => number_format($dataFactura[0]['cont_pedidoSubTotal'])
         ];
