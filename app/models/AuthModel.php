@@ -18,7 +18,5 @@ class AuthModel {
 
         return $stmt->fetch();
     }
-
-
 }
 ?>

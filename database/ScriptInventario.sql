@@ -4,27 +4,9 @@ CREATE TABLE Usuario(
   usu_cuenta varchar(255) UNIQUE NOT NULL,
   usu_email varchar(255) UNIQUE NOT NULL,
   usu_password text NOT NULL,
-  usu_idEstado integer NOT NULL DEFAULT 1000
+  usu_idEstado VARCHAR(4) NOT NULL DEFAULT 1000
 );
 
-CREATE TABLE Cliente (
-  cli_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  cil_nombre varchar(255) NOT NULL,
-  cil_apellido varchar(255) NOT NULL,
-  cil_email varchar(255) NOT NULL
-);
-
-CREATE TABLE telCliente (
-  tCli_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  tCli_idCliente integer NOT NULL,
-  tCli_telefono varhcar NOT NULL
-);
-
-CREATE TABLE dirCliente (
-  dCli_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  dCli_idCliente integer NOT NULL,
-  dCli_direccion varchar(255) NOT NULL
-);
 
 CREATE TABLE Proveedor (
   prov_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -36,13 +18,13 @@ CREATE TABLE Proveedor (
 CREATE TABLE telProveedor (
   tPro_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
   tPro_idProveedor integer NOT NULL,
-  tPro_telefono varhcar NOT NULL
+  tPro_telefono varchar(50) NOT NULL
 );
 
 CREATE TABLE dirProveedor (
   dPro_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
   dPro_idProveedor integer NOT NULL,
-  dPro_direccion varhcar NOT NULL
+  dPro_direccion varchar(50) NOT NULL
 );
 
 CREATE TABLE Categoria (
@@ -54,34 +36,20 @@ CREATE TABLE Categoria (
 CREATE TABLE Producto (
   pro_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
   pro_nombre varchar(255) NOT NULL,
-  pro_idCategoria varchar(255) NOT NULL,
+  pro_idCategoria INTEGER NOT NULL,
   pro_descripcion text NOT NULL,
   pro_precioVenta integer NOT NULL,
   pro_minStock integer NOT NULL
 );
 
-CREATE TABLE Inventario (
-  inv_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  inv_idProducto integer NOT NULL,
-  inv_stock float NOT NULL
-);
-
 CREATE TABLE Abastece (
   sum_id integer NOT NULL AUTO_INCREMENT,
   sum_idCompra integer NOT NULL,
-  sum_idProducto integet NOT NULL,
+  sum_idProducto integer NOT NULL,
   sum_cantidad integer NOT NULL,
   sum_precioUnitario integer NOT NULL,
   sum_subTotal float NOT NULL,
   PRIMARY KEY (sum_id, sum_idCompra, sum_idProducto)
-);
-
-CREATE TABLE Pedido (
-  ped_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  ped_idCliente integer NOT NULL,
-  ped_fecha DATE NOT NULL,
-  ped_idEstado int NOT NULL,
-  ped_totalPedido float NOT NULL
 );
 
 CREATE TABLE Compra (
@@ -89,6 +57,39 @@ CREATE TABLE Compra (
   com_idProveedor integer NOT NULL,
   com_fecha DATE NOT NULL,
   com_totalCompra float NOT NULL
+);
+
+CREATE TABLE Cliente (
+  cli_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  cli_nombre varchar(255) NOT NULL,
+  cli_apellido varchar(255) NOT NULL,
+  cli_email varchar(255) NOT NULL
+);
+
+CREATE TABLE telCliente (
+  tCli_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  tCli_idCliente integer NOT NULL,
+  tCli_telefono varchar(20) NOT NULL
+);
+
+CREATE TABLE dirCliente (
+  dCli_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  dCli_idCliente integer NOT NULL,
+  dCli_direccion varchar(255) NOT NULL
+);
+
+CREATE TABLE Pedido (
+  ped_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  ped_idCliente integer NOT NULL,
+  ped_fecha DATE NOT NULL,
+  ped_idEstado VARCHAR(4) NOT NULL,
+  ped_totalPedido float NOT NULL
+);
+
+CREATE TABLE Inventario (
+  inv_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  inv_idProducto integer NOT NULL,
+  inv_stock float NOT NULL
 );
 
 CREATE TABLE Contiene (
@@ -108,7 +109,7 @@ CREATE TABLE Proveedor_Producto (
 );
 
 CREATE TABLE Estado (
-  est_id VARCHAR(4) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  est_id VARCHAR(4) PRIMARY KEY NOT NULL,
   est_Nombre varchar(255) NOT NULL
 );
 
@@ -156,7 +157,8 @@ VALUES
 INSERT INTO usuario
     (usu_id, usu_nombre,usu_cuenta,usu_email,usu_password,usu_idEstado)
 VALUES
-    (3, 'admin','admin','admin@admin.com','$2y$10$JUTuOo3RQu8.DYnr.W0Xi.Lz8XJVOdLTQFvjN394UW87GSF5NpJca',1000);
+    (1, 'admin','admin','admin@admin.com','$2y$10$JUTuOo3RQu8.DYnr.W0Xi.Lz8XJVOdLTQFvjN394UW87GSF5NpJca',1000),
+    (2, 'Nuvola & Co.', 'Nuvola', 'nuvolaandco@gmail.com', '$2y$10$PAkzdK90TGyjTAT936.s4OiibwQ8FWnSmZQsXYI4uus.FxjshEHMS', '1000');
 
 CREATE TRIGGER registrar_inventario
 AFTER INSERT ON Producto
