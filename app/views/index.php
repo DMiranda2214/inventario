@@ -2,6 +2,20 @@
 
 use App\Core\View;
 use App\Core\Controller;
+
+$seccionModulo = function(string $moduleName) {
+    // Si la palabra es "index", retornamos sin cambios
+    if (strtolower($moduleName) === 'index') {
+        return '';
+    }
+
+    // Dividimos las palabras basándonos en las mayúsculas
+    $formattedName = preg_replace('/(?<!^)([A-Z])/', ' $1', $moduleName);
+
+    // Convertimos la primera letra de cada palabra en mayúscula
+    return ucfirst(strtolower($formattedName));
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +133,7 @@ use App\Core\Controller;
         </div>
     </div>
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
-        <header class="header">
+        <header class="header border-bottom">
             <div class="d-flex flex-row">
                 <button class="header-toggler" type="button"
                     onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
@@ -128,6 +142,16 @@ use App\Core\Controller;
                     </svg>
                 </button>
                 <h4 class="header-text">Bienvenido <?= $_SESSION['username'] ?></h4>
+            </div>
+            <div class="container-fluid mb-2 mt-3 border-top">
+                <nav class="mt-3" aria-label="breadcrumb">
+                    <ol class="breadcrumb my-0 ms-2">
+                        <li class="breadcrumb-item">
+                            <span><?= ucfirst($GLOBALS['PAGE']) ?></span>
+                        </li>
+                        <li class="breadcrumb-item active"><span><?= $seccionModulo($GLOBALS['SECTION']) ?></span></li>
+                    </ol>
+                </nav>
             </div>
         </header>
         <div class="body flex-grow-1 px-3">

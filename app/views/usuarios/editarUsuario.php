@@ -22,7 +22,7 @@ $estado = $usuario['usu_idEstado'] == 1000 ? 'checked' : '';
                     </div>
                 </div>
                 <div class="col-6">
-                    <label class="col-lg-3 control-label" for="inputUserCuenta">Cuenta</label>
+                    <label class="col-lg-3 control-label" for="inputUserCuenta">Usuario de acceso</label>
                     <div class="input-group">
                         <input type="text" name="usu_cuenta" value="<?= $usuario['usu_cuenta'] ?>" class="form-control" id="inputUserCuenta" placeholder="Cuenta de autenticacion">
                     </div>
@@ -36,7 +36,7 @@ $estado = $usuario['usu_idEstado'] == 1000 ? 'checked' : '';
                     </div>
                 </div>
                 <div class="col-6">
-                    <label class="col-lg-3 control-label" for="inputUserPassword">Contraseña</label>
+                    <label class="col-lg-3 control-label" for="inputUserPassword">Contraseña de acceso</label>
                     <div class="input-group">
                         <input type="password" name="usu_password" value="<?= $usuario['usu_password'] ?>" class="form-control" id="inputUserPassword" placeholder="Contraseña de autenticacion">
                     </div>

@@ -27,7 +27,7 @@
                             <td><?= date('Y-m-d', strtotime($compra['com_fecha'])) ?></td>
                             <td><?= $compra['producto'] ?></td>
                             <td><?= $compra['proveedor'] ?></td>
-                            <td><?= $compra['com_totalCompra'] ?></td>
+                            <td>$<?= number_format($compra['com_totalCompra']) ?></td>
                             <td>
                                 <a class="py-2 px-4 btn btn-info btn-xs" href="/inventario/public/compras/detalleCompra?com_id=<?= $compra['com_id'] ?>">
                                     <img src="/inventario/public/icons/info.svg" alt="Logo">

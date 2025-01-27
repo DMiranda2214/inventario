@@ -72,11 +72,10 @@ $compra = $comprasController->getDetailBuy($_GET['com_id']);
                         <label for="inputTotal" class="">Total: </label>
                         <div class="input-group">
                             <div class="input-group-text">$</div>
-                            <input type="text" name="sum_subTotal" value="<?php echo number_format($compra['sum_subTotal']) ?>" id="inputTotal" class="form-control" placeholder="Total" disabled>
+                            <input type="text" name="sum_subTotal" value="<?= number_format($compra['sum_subTotal']) ?>" id="inputTotal" class="form-control" placeholder="Total" disabled>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <br>

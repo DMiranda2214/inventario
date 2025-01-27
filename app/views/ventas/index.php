@@ -29,7 +29,7 @@ $ventas = $ventasController->get();
                         <tr>
                             <td><?= $venta['cli_nombre'] ?> <?= $venta['cli_apellido'] ?></td>
                             <td><?= date('Y-m-d', strtotime($venta['ped_fecha'])) ?></td>
-                            <td><?= $venta['ped_totalPedido'] ?></td>
+                            <td>$<?= number_format($venta['ped_totalPedido']) ?></td>
                             <td>
                                 <a class="py-2 px-4 btn btn-info btn-xs" href="/inventario/public/ventas/detalleVenta?ped_id=<?= $venta['ped_id'] ?>">
                                     <img src="/inventario/public/icons/info.svg" alt="Logo">

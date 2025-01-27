@@ -8,7 +8,7 @@
 <br>
 <div class="card">
     <div class="card-header">
-        <strong>Nuevo Cliente</strong>
+        <strong>Editar Cliente</strong>
     </div>
     <div class="card-body">
         <form action="/inventario/public/Clientes/edit" class="form-horizontal" method="post">

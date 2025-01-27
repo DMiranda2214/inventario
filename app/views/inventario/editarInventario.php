@@ -30,7 +30,7 @@ $inventario = $inventarioController->getById($_GET['inv_id']);
                     </div>
                 </div>
                 <div class="col-6">
-                    <label class="col-lg-3 control-label" for="inlineFormInputGroupSellPrice">Precio de venta</label>
+                    <label class="control-label" for="inlineFormInputGroupSellPrice">Precio de venta</label>
                     <div class="input-group">
                         <div class="input-group-text">$</div>
                         <input type="number" name="inv_precioVenta" value="<?= $inventario['inv_precioVenta'] ?>" class="form-control" id="inlineFormInputGroupSellPrice" placeholder="Precio de venta">

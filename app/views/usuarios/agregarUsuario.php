@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <label class="col-lg-3 control-label" for="inputUserCuenta">Cuenta</label>
+                    <label class="col-lg-3 control-label" for="inputUserCuenta">Usuario de acceso</label>
                     <div class="input-group">
                         <input type="text" name="usu_cuenta" class="form-control" id="inputUserCuenta" placeholder="Cuenta de autenticacion">
                     </div>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <label class="col-lg-3 control-label" for="inputUserPassword">Contraseña</label>
+                    <label class="col-lg-3 control-label" for="inputUserPassword">Contraseña de acceso</label>
                     <div class="input-group">
                         <input type="password" name="usu_password" class="form-control" id="inputUserPassword" placeholder="Contraseña de autenticacion">
                     </div>

@@ -48,11 +48,17 @@ $pedido = $ventasController->getDetailSell($_GET['ped_id']);
                 <div class="row mt-3">
                     <div class="col-6">
                         <label for="inputPrecio" class="">Precio por unidad: </label>
-                        <input type="number" name="cont_precioUnitario" value="<?= $pedido[0]['cont_precioUnitario'] ?>" id="inputPrecio" class="form-control" placeholder="Precio" disabled>
+                        <div class="input-group">
+                            <div class="input-group-text">$</div>
+                            <input type="text" name="cont_precioUnitario" value="<?= number_format($pedido[0]['cont_precioUnitario']) ?>" id="inputPrecio" class="form-control" placeholder="Precio" disabled>
+                        </div>
                     </div>
                     <div class="col-6">
                         <label for="inputTotal" class="">Total: </label>
-                        <input type="number" name="cont_pedidoSubTotal" value="<?= $pedido[0]['cont_pedidoSubTotal'] ?>" id="inputTotal" class="form-control" placeholder="Total" disabled>
+                        <div class="input-group">
+                            <div class="input-group-text">$</div>
+                            <input type="text" name="cont_pedidoSubTotal" value="<?= number_format($pedido[0]['cont_pedidoSubTotal']) ?>" id="inputTotal" class="form-control" placeholder="Total" disabled>
+                        </div>
                     </div>
                 </div>
 

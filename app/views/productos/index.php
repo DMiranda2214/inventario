@@ -55,7 +55,7 @@ $productos = $productosController->getTotalProductsByPage($page, $limit);
                         <tr>
                             <td><?= $producto['pro_nombre'] ?></td>
                             <td><?= $producto['pro_descripcion'] ?></td>
-                            <td><?= $producto['pro_precioVenta'] ?></td>
+                            <td>$<?= number_format($producto['pro_precioVenta']) ?></td>
                             <td>
                                 <a class="py-2 px-4 btn btn-info btn-xs" href="/inventario/public/Productos/editarProducto?pro_id=<?= $producto['pro_id'] ?>">
                                     <svg class="btn-icon" width="24" height="24">
