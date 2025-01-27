@@ -89,7 +89,8 @@ CREATE TABLE Pedido (
 CREATE TABLE Inventario (
   inv_id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
   inv_idProducto integer NOT NULL,
-  inv_stock float NOT NULL
+  inv_stock float NOT NULL,
+  inv_precioVenta float NOT NULL
 );
 
 CREATE TABLE Contiene (

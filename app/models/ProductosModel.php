@@ -79,12 +79,12 @@ class ProductosModel
             p.pro_id,
             p.pro_nombre,
             i.inv_Stock,
-            p.pro_cantMin
+            p.pro_minStock
         FROM
             Producto p
             INNER JOIN Inventario i ON p.pro_id = i.inv_idProducto
         WHERE 
-            i.inv_Stock <= p.pro_cantMin;";
+            i.inv_Stock <= p.pro_minStock;";
         $result = $this->connection->query($query);
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
