@@ -14,9 +14,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-lg-2 control-label">Descripcion</label>
+                        <label for="inlineFormInputCategoryDescription" class="col-lg-2 control-label">Descripcion</label>
                         <div class="col-md-6">
-                            <textarea name="cat_descripcion" id=""></textarea>
+                            <textarea type="text" name="cat_descripcion" class="form-control"  id="inlineFormInputCategoryDescription" placeholder="Descripcion de la categoria"></textarea>
                         </div>
                     </div>
                     <br>
