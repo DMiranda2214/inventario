@@ -42,9 +42,5 @@ class ClientesModel {
         $result = $this->connection->query($query);
         return;
     }
-
-
-
 }
-
 ?>

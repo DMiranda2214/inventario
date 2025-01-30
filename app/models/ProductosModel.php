@@ -22,7 +22,7 @@ class ProductosModel
         return $row['total'];
     }
 
-    public function getTotalProductos()
+    public function getAllProducts()
     {
         $query = "SELECT * FROM $this->table";
         $result = $this->connection->query($query);
@@ -46,8 +46,9 @@ class ProductosModel
 
     public function insertProduct($data)
     {
+        $cantMin = ($data['pro_cantMin'])? intval($data['pro_cantMin']) : 10; 
         $query = "INSERT INTO $this->table(pro_nombre,pro_idCategoria,pro_descripcion,pro_precioVenta,pro_minStock) 
-                    VALUES('{$data['pro_nombre']}',{$data['pro_idCategoria']},'{$data['pro_descripcion']}',{$data['pro_precioVenta']},{$data['pro_cantMin']});";
+                    VALUES('{$data['pro_nombre']}',{$data['pro_idCategoria']},'{$data['pro_descripcion']}',{$data['pro_precioVenta']},{$cantMin});";
         $result = $this->connection->query($query);
         return;
     }
@@ -89,3 +90,5 @@ class ProductosModel
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
 }
+
+//

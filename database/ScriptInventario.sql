@@ -39,7 +39,7 @@ CREATE TABLE Producto (
   pro_idCategoria INTEGER NOT NULL,
   pro_descripcion text NOT NULL,
   pro_precioVenta integer NOT NULL,
-  pro_minStock integer NOT NULL
+  pro_minStock integer NOT NULL DEFAULT 10
 );
 
 CREATE TABLE Abastece (
@@ -600,5 +600,3 @@ END
 //
 
 DELIMITER ;
-
-

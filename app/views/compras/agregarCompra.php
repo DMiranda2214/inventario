@@ -5,7 +5,7 @@ use App\Controllers\ProveedorController;
 $proveedorController = new ProveedorController();
 $productoController = new ProductosController();
 
-$listProductos = $productoController->getTotalProducts();
+$listProductos = $productoController->get();
 $listProveedor = $proveedorController->get();
 ?>
 

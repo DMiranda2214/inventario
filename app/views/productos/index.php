@@ -4,34 +4,7 @@ use App\Controllers\ProductosController;
 
 $productosController = new ProductosController();
 
-$page = 1;
-if (isset($_GET["page"])) {
-    $page = $_GET["page"];
-}
-$limit = 3;
-if (isset($_GET["limit"]) && $_GET["limit"] != "" && $_GET["limit"] != $limit) {
-    $limit = $_GET["limit"];
-}
-
-function getPagination($page, $limit, $totalProducts)
-{
-    $totalPages = ceil($totalProducts / $limit);
-    if ($totalPages <= 1) {
-        return "";
-    }
-    $pagination = "";
-    for ($i = 1; $i <= $totalPages; $i++) {
-        if ($i == $page) {
-            $pagination .= "<span class='btn btn-primary'>$i</span>";
-        } else {
-            $pagination .= "<a href='/inventario/public/Productos/index?page=$i&limit=$limit' class='btn btn-secondary'>$i</a>";
-        }
-    }
-    return $pagination;
-}
-
-$totalProducts = $productosController->countProducts();
-$productos = $productosController->getTotalProductsByPage($page, $limit);
+$productos = $productosController->get();
 ?>
 
 <br>

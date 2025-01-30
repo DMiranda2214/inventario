@@ -10,12 +10,6 @@ class CategoriaModel {
         $this->connection = Database::getInstance()->getConnection();
     }
 
-    public function getCategoriesName() {
-        $query = "SELECT cat_id,cat_nombre FROM $this->table";
-        $result = $this->connection->query($query);
-        return $result->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
     public function getAllCategories() {
         $query= "SELECT cat_id,cat_nombre,cat_descripcion FROM $this->table";
         $result = $this->connection->query($query);
@@ -48,3 +42,5 @@ class CategoriaModel {
     }
 }
 ?>
+
+//

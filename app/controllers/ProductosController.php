@@ -46,13 +46,8 @@ class ProductosController extends Controller {
         return $total;
     }
 
-    public function getTotalProducts() {
-        $productos = $this->productosModel->getTotalProductos();
-        return $productos;
-    }
-
-    public function getTotalProductsByPage($page, $limit) {
-        $productos = $this->productosModel->getTotalProductosByPage($page, $limit);
+    public function get() {
+        $productos = $this->productosModel->getAllProducts();
         return $productos;
     }
 
