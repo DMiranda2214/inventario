@@ -10,13 +10,13 @@
                     <div class="form-group">
                         <label for="inputEmail1" class="col-lg-2 control-label">Nombre</label>
                         <div class="col-md-6">
-                            <input type="text" name="cat_nombre" required class="form-control" id="name" placeholder="Nombre">
+                            <input type="text" name="cat_nombre" required class="form-control" id="name" placeholder="Nombre" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inlineFormInputCategoryDescription" class="col-lg-2 control-label">Descripcion</label>
                         <div class="col-md-6">
-                            <textarea type="text" name="cat_descripcion" class="form-control"  id="inlineFormInputCategoryDescription" placeholder="Descripcion de la categoria"></textarea>
+                            <textarea type="text" name="cat_descripcion" class="form-control"  id="inlineFormInputCategoryDescription" placeholder="Descripcion de la categoria" required></textarea>
                         </div>
                     </div>
                     <br>

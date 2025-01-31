@@ -18,13 +18,13 @@ $estado = $usuario['usu_idEstado'] == 1000 ? 'checked' : '';
                 <div class="col-6">
                     <label class="col-lg-3 control-label" for="inputUserNombre">Nombre</label>
                     <div class="input-group">
-                        <input type="text" name="usu_nombre" value="<?= $usuario['usu_nombre'] ?>" disabled class="form-control" id="inputUserNombre" placeholder="Nombre del Usuario">
+                        <input required type="text" name="usu_nombre" value="<?= $usuario['usu_nombre'] ?>" disabled class="form-control" id="inputUserNombre" placeholder="Nombre del Usuario">
                     </div>
                 </div>
                 <div class="col-6">
                     <label class="col-lg-3 control-label" for="inputUserCuenta">Usuario de acceso</label>
                     <div class="input-group">
-                        <input type="text" name="usu_cuenta" value="<?= $usuario['usu_cuenta'] ?>" class="form-control" id="inputUserCuenta" placeholder="Cuenta de autenticacion">
+                        <input required type="text" name="usu_cuenta" value="<?= $usuario['usu_cuenta'] ?>" class="form-control" id="inputUserCuenta" placeholder="Cuenta de autenticacion">
                     </div>
                 </div>
             </div>
@@ -32,13 +32,13 @@ $estado = $usuario['usu_idEstado'] == 1000 ? 'checked' : '';
                 <div class="col-6">
                     <label class="col-lg-3 control-label" for="inputUserEmail">Correo</label>
                     <div class="input-group">
-                        <input type="email" name="usu_email" value="<?= $usuario['usu_email'] ?>" disabled class="form-control" id="inputUserEmail" placeholder="Correo del usuario">
+                        <input required type="email" name="usu_email" value="<?= $usuario['usu_email'] ?>" disabled class="form-control" id="inputUserEmail" placeholder="Correo del usuario">
                     </div>
                 </div>
                 <div class="col-6">
                     <label class="col-lg-3 control-label" for="inputUserPassword">Contraseña de acceso</label>
                     <div class="input-group">
-                        <input type="password" name="usu_password" value="<?= $usuario['usu_password'] ?>" class="form-control" id="inputUserPassword" placeholder="Contraseña de autenticacion">
+                        <input required type="password" name="usu_password" value="<?= $usuario['usu_password'] ?>" class="form-control" id="inputUserPassword" placeholder="Contraseña de autenticacion">
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@ $estado = $usuario['usu_idEstado'] == 1000 ? 'checked' : '';
             <div class="row mb-3">
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                    <input type="text" hidden name="usu_id"value="<?= $usuario['usu_id'] ?>">
+                    <input required type="text" hidden name="usu_id"value="<?= $usuario['usu_id'] ?>">
                         <button type="submit" class="btn btn-primary">Editar Usuario</button>
                     </div>
                 </div>

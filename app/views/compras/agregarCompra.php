@@ -24,7 +24,7 @@ $listProveedor = $proveedorController->get();
                             <div class="col-12">
                                 <label for="inputProveedor" class="control-label mb-1">Proveedor:</label>
                                 <div class="input-group">
-                                    <select name="com_idProveedor" id="inputProveedor" class="form-control">
+                                    <select required name="com_idProveedor" id="inputProveedor" class="form-control">
                                         <option selected>Seleccione un proveedor</option>
                                         <?php foreach($listProveedor as $proveedor):?>
                                             <option value='<?=$proveedor['prov_id']?>'><?=$proveedor['prov_empresa']?></option>
@@ -36,7 +36,7 @@ $listProveedor = $proveedorController->get();
                         <div class="row mb-3">
                             <label for="inputFecha" class="col-sm-12 col-form-label">Fecha de compra:</label>
                             <div class="col-12">
-                                <input type="date" id="inputFecha" name="com_fecha" class="form-control" required>
+                                <input required type="date" id="inputFecha" name="com_fecha" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ $listProveedor = $proveedorController->get();
                             <div class="col-12">
                                 <label for="inputProducto" class="control-label mb-1">Producto:</label>
                                 <div class="input-group">
-                                    <select name="sum_idProducto" id="inputProducto" class="form-control">
+                                    <select required name="sum_idProducto" id="inputProducto" class="form-control">
                                         <option selected>Seleccione un producto</option>
                                         <?php foreach($listProductos as $producto):?>
                                             <option value='<?= $producto['pro_id'] ?>' ><?=$producto['pro_nombre']?></option>
@@ -61,7 +61,7 @@ $listProveedor = $proveedorController->get();
                             <div class="col-12">
                                 <label for="inputCantidad" class="control-label mb-1">Cantidad: </label>
                                 <div class="input-group">
-                                    <input type="number" name="sum_cantidad" id="inputCantidad" class="form-control">
+                                    <input required type="number" name="sum_cantidad" id="inputCantidad" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@ $listProveedor = $proveedorController->get();
                             <div class="col-12">
                                 <label for="inputPrecio" class="control-label mb-1">Precio por unidad: </label>
                                 <div class="input-group">
-                                    <input type="number" name="sum_precioUnitario" id="inputPrecio" class="form-control">
+                                    <input required type="number" name="sum_precioUnitario" id="inputPrecio" class="form-control">
                                 </div>
                             </div>
                         </div>
